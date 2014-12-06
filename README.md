@@ -3,7 +3,7 @@ update_name_py
 
 update_nameをpythonでやりました.
 
-使用したパッケージ
+使用したライブラリ
 
 https://github.com/sixohsix/twitter
 
