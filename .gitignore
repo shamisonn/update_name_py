@@ -1,3 +1,5 @@
 .idea
 *.iml
 config/my_config.ini
+
+*.ini
