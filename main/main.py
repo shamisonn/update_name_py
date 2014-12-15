@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__author__ = 'cohalz'
+__author__ = 'shamison'
 
 from twitter import *
 import configparser
@@ -40,22 +40,11 @@ def update_name(msg):
     # tweetの文字列の加工
     new_name = msg['text']
     new_name = new_name.replace(my_name + ' ', '')
-    new_name = new_name.replace('(' + my_name + ')', '')
+    
+    # 先頭から20文字を名前に指定する
     new_name = new_name[0:20]
-
-
-    # update_nameする
-    update_name_tweets = '@' + msg['user']['screen_name'] + ' 「' + new_name + '」に変更しました.'
-
-    # 文字数制限
-    if len(update_name_tweets) < 140:
-        tw.account.update_profile(name=new_name)
-    #    tw.statuses.update(status=update_name_tweets)
-        print("名前を変更しました: -> " + new_name)
-    #else:
-    #     tw.statuses.update(
-    #         status='@' + msg['user']['screen_name'] + ' 文字数制限です> <'
-    #     )
+    tw.account.update_profile(name=new_name)
+    print("名前を変更しました: -> " + new_name)
 
 # tweetを取得する.
 for msg in tw_us.user():
@@ -70,6 +59,5 @@ for msg in tw_us.user():
 
     # update_nameするかを判定.
     # 特定の文字列が流れてきたらupdate_nameする.
-    if "text" in msg and (msg['text'].startswith(my_name + ' ')
-                          or msg['text'].endswith("(" + my_name + ")")):
+    if "text" in msg and (msg['text'].startswith(my_name + ' ')):
         update_name(msg)
