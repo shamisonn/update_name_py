@@ -50,7 +50,7 @@ def update_name(msg):
 
     # update_nameする
     else:
-        update_name_tweets = '.@' + msg['user']['screen_name'] + ' 「' + new_name + '」ドンッ！'
+        update_name_tweets = '@' + msg['user']['screen_name'] + ' 名前を' + new_name + 'に変更しました！'
 
         # 文字数制限
         if len(update_name_tweets) < 140:
