@@ -3,10 +3,11 @@ __author__ = 'shamison'
 
 from twitter import *
 import configparser
+import os
 
 # config.iniから読み込み. consumer_keyとかを諸々書いておく
 config = configparser.ConfigParser()
-config.read('../config/config.ini')
+config.read(os.path.join(os.path.dirname(__file__), '../config/config.ini'))
 oauth_config = config['oauth']
 
 # userstream用に作成.
